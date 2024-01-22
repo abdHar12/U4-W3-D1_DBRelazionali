@@ -1,0 +1,11 @@
+1: select * from clienti where nome='Mario'
+2: select * from clienti where anno_di_nascita=1982
+3: select count(*) from fatture where iva=20
+4: select * from prodotti where EXTRACT(year from data_attivazione)=2017
+5: select * from prodotti where EXTRACT(year from data_attivazione)=2017 and (in_produzione or in_commercio) 
+6: select * from fatture join clienti on fatture.numero_cliente=clienti.numero_cliente where importo<1000
+7: select numero_fattura, importo, iva, fornitori.denominazione from fatture join fornitori on fornitori.numero_fornitore = fatture.numero_fornitore 
+8: select extract(year from fatture.data_fattura) as anno_fatture, count(*) as num_fatture from fatture where iva=20 group by anno_fatture
+9: select extract(year from fatture.data_fattura) as anno_fatture, count(*) as num_fatture, sum(importo) as somma_importi from fatture group by anno_fatture
+EXTRA1: 
+
