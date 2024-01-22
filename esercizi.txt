@@ -7,5 +7,15 @@
 7: select numero_fattura, importo, iva, fornitori.denominazione from fatture join fornitori on fornitori.numero_fornitore = fatture.numero_fornitore 
 8: select extract(year from fatture.data_fattura) as anno_fatture, count(*) as num_fatture from fatture where iva=20 group by anno_fatture
 9: select extract(year from fatture.data_fattura) as anno_fatture, count(*) as num_fatture, sum(importo) as somma_importi from fatture group by anno_fatture
-EXTRA1: 
+EXTRA1: select extract(year from fatture.data_fattura) as anno_fatture
+	from fatture
+	WHERE tipologia = 'A'
+	group by anno_fatture
+	HAVING COUNT(*) > 2;
+EXTRA2: select regione_di_provenienza, sum(importo) from fatture 
+	join clienti on fatture.numero_cliente=clienti.numero_cliente
+	group by regione_di_provenienza
+EXTRA3: select * from fatture 
+	join clienti on clienti.numero_cliente=fatture.numero_cliente 
+	where anno_di_nascita=1980 and fatture.importo>50
 
